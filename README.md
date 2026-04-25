@@ -1,47 +1,22 @@
-# Delivery Box with Auto-Payment
+# Soroban Project
 
-Smart delivery box that releases courier payment only after confirmed drop-off.
+## Project Structure
 
-## Problem
-Couriers in Quezon City lose money and time due to failed deliveries when recipients are unavailable.
+This repository uses the recommended structure for a Soroban project:
 
-## Solution
-Buyers prepay using Stellar; funds are released instantly when courier confirms delivery via QR scan.
+```text
+.
+├── contracts
+│   └── hello_world
+│       ├── src
+│       │   ├── lib.rs
+│       │   └── test.rs
+│       └── Cargo.toml
+├── Cargo.toml
+└── README.md
+```
 
-## Timeline
-Day 1: Contract  
-Day 2: QR + frontend  
-Day 3: Demo  
-
-## Stellar Features Used
-- USDC transfers  
-- Soroban smart contracts  
-
-## Vision and Purpose
-Eliminate failed deliveries and enable trustless last-mile logistics.
-
-## Prerequisites
-- Rust
-- Soroban CLI
-
-## Build
-soroban contract build
-
-## Test
-cargo test
-
-## Deploy
-soroban contract deploy \
---wasm target/wasm32-unknown-unknown/release/delivery_box_with_auto_payment.wasm \
---network testnet
-
-## Example Call
-soroban contract invoke \
---id <CONTRACT_ID> \
---fn create_delivery \
---arg <buyer> \
---arg <courier> \
---arg 100
-
-## License
-MIT
+- New Soroban contracts can be put in `contracts`, each in their own directory. There is already a `hello_world` contract in there to get you started.
+- If you initialized this project with any other example contracts via `--with-example`, those contracts will be in the `contracts` directory as well.
+- Contracts should have their own `Cargo.toml` files that rely on the top-level `Cargo.toml` workspace for their dependencies.
+- Frontend libraries can be added to the top-level directory as well. If you initialized this project with a frontend template via `--frontend-template` you will have those files already included.
